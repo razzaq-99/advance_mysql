@@ -78,3 +78,29 @@ Delimiter ;
 
 call classic_models.get_result_out(@buyprice);
 select @buyprice;
+
+
+-- inout in procedure
+select * from classic_models.products;
+Delimiter && 
+create procedure classic_models.get_result_name2(inout var int)
+begin 
+     select productName,productDescription from classic_models.products where buyPrice > var;
+end && 
+Delimiter ;
+
+set @m = 100.00;
+call classic_models.get_result_name2(@m);
+select @m
+
+
+Delimiter && 
+create procedure classic_models.get_result_name3(inout var int)
+begin 
+     select productName,productDescription,buyPrice from classic_models.products where buyPrice > var;
+end && 
+Delimiter ;
+
+set @m = 102.00;
+call classic_models.get_result_name3(@m);
+select @m;
