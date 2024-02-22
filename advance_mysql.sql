@@ -104,3 +104,23 @@ Delimiter ;
 set @m = 102.00;
 call classic_models.get_result_name3(@m);
 select @m;
+
+
+
+
+
+
+                                              -- Windows functions
+select * from classic_models.customers;
+
+select customerName,phone,country,sum(creditLimit) from classic_models.customers
+group by customerName,phone,country;
+
+select customerName,phone,country,sum(creditLimit) 
+over (partition by country) from classic_models.customers;
+
+select customerName,phone,country,rank()
+over (partition by country order by customerName) from classic_models.customers;
+
+select customerName,phone,country,dense_rank()
+over (partition by country order by customerName) from classic_models.customers;
