@@ -124,3 +124,10 @@ over (partition by country order by customerName) from classic_models.customers;
 
 select customerName,phone,country,dense_rank()
 over (partition by country order by customerName) from classic_models.customers;
+
+
+select productName,productCode,rank()
+over (partition by productCode order by productName) from classic_models.products;
+
+select productName,productCode,dense_rank()
+over (partition by productCode order by productName) from classic_models.products;
