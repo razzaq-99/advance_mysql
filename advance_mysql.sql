@@ -131,3 +131,27 @@ over (partition by productCode order by productName) from classic_models.product
 
 select productName,productCode,dense_rank()
 over (partition by productCode order by productName) from classic_models.products;
+
+
+
+                               -- Temp Tables
+create temporary table demo.employee(
+name varchar(20),
+jobtitle varchar(20),
+age int,
+salary int );
+
+select * from demo.employee;
+
+insert into demo.employee
+values ( "Abdul","Software",20,200000);
+
+select * from demo.employee;
+
+-- insert into demo.employee select * from demo.customers_data;  if same no: of columns
+
+insert into demo.employee values (
+"ali","Mechanical",22,100000
+);
+
+select * from demo.employee;
